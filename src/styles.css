@@ -571,3 +571,105 @@ button {
 .leaflet-control-zoom.leaflet-bar a:hover {
   background: var(--surface-2);
 }
+
+/* ---------- kinds and regions */
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.kind-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+
+.kind-badge--player,
+.kind-chip--player {
+  border-color: #5b6dff;
+}
+
+.kind-badge--player {
+  background: rgba(91, 109, 255, 0.2);
+}
+
+.kind-badge--npc,
+.kind-chip--npc {
+  border-color: #3fae5a;
+}
+
+.kind-badge--npc {
+  background: rgba(63, 174, 90, 0.2);
+}
+
+.kind-badge--hostile,
+.kind-chip--hostile {
+  border-color: #d24a4a;
+}
+
+.kind-badge--hostile {
+  background: rgba(210, 74, 74, 0.22);
+}
+
+.kind-badge--empty {
+  color: var(--muted);
+}
+
+.chip--region {
+  border-color: #b06ad9;
+  font-size: 12px;
+}
+
+.chip--static {
+  cursor: default;
+}
+
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stat-row strong {
+  color: var(--text);
+}
+
+.kind--player strong {
+  color: #8f9bff;
+}
+
+.kind--npc strong {
+  color: #6fd08a;
+}
+
+.kind--hostile strong {
+  color: #f07a7a;
+}
+
+.region-label {
+  cursor: pointer;
+}
+
+.region-handle {
+  border: 2px solid #b06ad9;
+  border-radius: 50%;
+  background: #fff;
+  cursor: move;
+}
+
+.region-handle--mid {
+  border-width: 1px;
+  background: rgba(176, 106, 217, 0.6);
+  cursor: copy;
+}

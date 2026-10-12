@@ -6,20 +6,25 @@
 # The map is a clean diagram: outlined circles on a light grey (V~228) background,
 # filled white, navy, green or dark red; black lanes, dashed region borders and text.
 
-image: public/map/perseus.png
+image: public/map/perseus.webp
 
 stars:
   # the circles' FILL colours (the black outline is excluded, so radii are fill radii).
   # Labels are printed in the same colours, but their strokes are thin enough that
-  # open_px removes them.
+  # open_px removes them. Sizes are 'auto' so a rescaled map needs no retuning.
+  # Keys are the system kinds recorded in map.json (the map legend); values are HSV ranges.
   colors:
-    - [[0, 0, 245], [180, 12, 255]]      # white (background is V~228, so it is excluded)
-    - [[110, 150, 80], [130, 255, 200]]  # navy
-    - [[50, 150, 80], [70, 255, 200]]    # green
-    - [[0, 150, 110], [8, 255, 230]]     # dark red
-    - [[172, 150, 110], [180, 255, 230]] # dark red (hue wraps around 180)
-  open_px: 3          # morphological opening; erases text strokes (5 would erase the small red stars)
-  min_radius: 2.5     # px, radius of the largest circle that fits inside the blob (red stars ~3)
+    empty:                                  # white (background is V~228, so it is excluded)
+      - [[0, 0, 245], [180, 12, 255]]
+    player:                                 # navy
+      - [[110, 150, 80], [130, 255, 200]]
+    npc:                                    # green
+      - [[50, 150, 80], [70, 255, 200]]
+    hostile:                                # dark red (hue wraps around 180)
+      - [[0, 150, 110], [8, 255, 230]]
+      - [[172, 150, 110], [180, 255, 230]]
+  open_px: auto      # text-erasing opening; auto = ~0.6x the median star radius (odd)
+  min_radius: auto   # smallest star kept; auto = 0.45x the median radius (red stars are smallest)
   max_radius: 14
   min_fill: 0.6       # how solid the blob core is (round dot ~1.0)
   max_aspect: 1.5     # bounding box long side / short side
@@ -27,7 +32,7 @@ stars:
 lanes:
   colors:
     - [[0, 0, 0], [180, 90, 110]]        # black ink
-  dilate_px: 3        # tolerance: lanes are drawn to circle edges, not always centre-to-centre
+  dilate_px: auto     # ink tolerance around the centre line; auto = half the median star radius
   max_length: 400     # px; longest lane worth testing
   min_coverage: 0.85  # fraction of samples along the segment that must be ink (dashed borders ~0.5)
   star_margin: 3      # px trimmed past each star's fill radius (skips the outline)
@@ -38,3 +43,15 @@ matching:
   auto_fraction: 0.35 #   this fraction of the median distance between neighbouring stars
   allow_scale: true   # also consider uniform rescales (image width/height ratios)
   moved_threshold: 2  # px; smaller shifts are reported as unchanged
+
+regions:
+  # Used by --propose-regions. Sizes are multiples of R, the median star radius.
+  ink:
+    - [[0, 0, 0], [180, 90, 110]]        # border dashes and label text (black)
+  label_min_width: 6    # region names are wider and taller than system names
+  label_min_height: 2.9
+  link_short: 8         # dash-to-dash links that may turn corners
+  link_long: 20         # straight-on links across gaps (labels printed over a border)
+  min_area: 150         # smallest enclosed area that counts as a region
+  edge_reach: 3         # how far outside a border a star can sit and still belong
+  label_reach: 8        # how far a name may be printed from its region

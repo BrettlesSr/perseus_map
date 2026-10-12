@@ -3,12 +3,22 @@ import {
   MapDataSchema,
   checkMap,
   type GameData,
+  type GameRegion,
   type GameSystem,
   type MapData,
+  type MapRegion,
   type MapSystem,
   type Nation,
   type PresenceRole,
+  type SystemKind,
 } from "./schema";
+
+export const kindLabel: Record<SystemKind, string> = {
+  empty: "Empty",
+  player: "Player",
+  npc: "NPC",
+  hostile: "Hostile NPC",
+};
 
 export const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 
@@ -45,16 +55,39 @@ export interface SystemView {
   /** colour of the capital/colony holder, for tinting the marker */
   ownerColor?: string;
   neighbors: string[];
+  kind?: SystemKind;
+  region?: string;
+}
+
+export interface RegionView {
+  geo: MapRegion;
+  /** undefined until the GMs add the region to the Regions tab */
+  info?: GameRegion;
+  name: string;
+  /** system ids inside the outline */
+  systems: string[];
 }
 
 export interface World {
   systems: Map<string, SystemView>;
+  regions: Map<string, RegionView>;
   nations: Map<string, Nation>;
   /** nation id -> system ids it is present in */
   nationSystems: Map<string, string[]>;
 }
 
 const roleOrder: Record<PresenceRole, number> = { capital: 0, colony: 1, outpost: 2, claim: 3 };
+
+/** Even-odd ray casting; polygon in image pixels. */
+export function pointInPolygon(x: number, y: number, poly: [number, number][]): boolean {
+  let inside = false;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+    const [xi, yi] = poly[i];
+    const [xj, yj] = poly[j];
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
 
 export function buildWorld(map: MapData, game: GameData): World {
   const nations = new Map(game.nations.map((n) => [n.id, n]));
@@ -85,7 +118,20 @@ export function buildWorld(map: MapData, game: GameData): World {
       presence,
       ownerColor: holder?.nation.color,
       neighbors: neighbors.get(geo.id) ?? [],
+      kind: geo.kind,
+      region: map.regions.find((r) => r.polygon.length >= 3 && pointInPolygon(geo.x, geo.y, r.polygon))?.id,
     });
   }
-  return { systems, nations, nationSystems };
+
+  const regionInfo = new Map(game.regions.map((r) => [r.id, r]));
+  const regions = new Map<string, RegionView>();
+  for (const geo of map.regions) {
+    regions.set(geo.id, {
+      geo,
+      info: regionInfo.get(geo.id),
+      name: regionInfo.get(geo.id)?.name || "Unnamed region",
+      systems: [...systems.values()].filter((s) => s.region === geo.id).map((s) => s.geo.id),
+    });
+  }
+  return { systems, regions, nations, nationSystems };
 }

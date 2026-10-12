@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import L from "leaflet";
-import { CircleMarker, Marker, Pane, Polyline, useMapEvents } from "react-leaflet";
+import { CircleMarker, Marker, Pane, Polygon, Polyline, useMapEvents } from "react-leaflet";
 import { MapDataSchema, checkMap, type MapData, type MapSystem } from "../data/schema";
 import type { World } from "../data/load";
 import { fromLatLng, toLatLng } from "../map/coords";
 
-export type Tool = "move" | "add" | "lane" | "delete";
+export type Tool = "move" | "add" | "lane" | "delete" | "region";
 
 const formatId = (n: number) => `sys-${String(n).padStart(4, "0")}`;
 const laneKey = (a: string, b: string) => (a < b ? `${a}|${b}` : `${b}|${a}`);
@@ -36,9 +36,11 @@ interface LayerProps {
   setLaneStart: (id: string | undefined) => void;
   showLabels: boolean;
   proposal?: MapData;
+  editRegion?: string;
 }
 
-export function EditorLayers({ draft, world, tool, laneStart, setLaneStart, showLabels, proposal }: LayerProps) {
+export function EditorLayers(props: LayerProps) {
+  const { draft, world, tool, laneStart, setLaneStart, showLabels, proposal, editRegion } = props;
   const map = draft.draft;
   const byId = useMemo(() => new Map(map.systems.map((s) => [s.id, s])), [map.systems]);
   const defaultR = useMemo(() => {
@@ -46,8 +48,17 @@ export function EditorLayers({ draft, world, tool, laneStart, setLaneStart, show
     return rs.length ? rs[Math.floor(rs.length / 2)] : 8;
   }, [map.systems]);
 
+  const setRegionPolygon = (id: string, f: (poly: [number, number][]) => [number, number][]) =>
+    draft.commit((m) => ({ ...m, regions: m.regions.map((r) => (r.id === id ? { ...r, polygon: f(r.polygon) } : r)) }));
+
   useMapEvents({
     click(e) {
+      if (tool === "region" && editRegion) {
+        // append a corner: how a missing outline is drawn from scratch
+        const { x, y } = fromLatLng(e.latlng);
+        setRegionPolygon(editRegion, (poly) => [...poly, [x, y]]);
+        return;
+      }
       if (tool !== "add") return;
       const { x, y } = fromLatLng(e.latlng);
       draft.commit((m) => ({
@@ -86,6 +97,11 @@ export function EditorLayers({ draft, world, tool, laneStart, setLaneStart, show
   return (
     <>
       {proposal && <ProposalLayer current={map} proposal={proposal} />}
+      <RegionOutlines
+        regions={map.regions}
+        editing={tool === "region" ? editRegion : undefined}
+        setPolygon={setRegionPolygon}
+      />
       <Pane name="editor-lanes" style={{ zIndex: 430 }}>
         {map.lanes.map(([a, b]) => {
           const sa = byId.get(a);
@@ -109,6 +125,7 @@ export function EditorLayers({ draft, world, tool, laneStart, setLaneStart, show
           unnamed={!world.systems.get(s.id)?.info}
           active={s.id === laneStart}
           draggable={tool === "move"}
+          interactive={tool !== "region"}
           onClick={() => onStarClick(s)}
           onMove={(x, y) =>
             draft.commit((m) => ({ ...m, systems: m.systems.map((o) => (o.id === s.id ? { ...o, x, y } : o)) }))
@@ -125,11 +142,12 @@ interface StarProps {
   unnamed: boolean;
   active: boolean;
   draggable: boolean;
+  interactive: boolean;
   onClick: () => void;
   onMove: (x: number, y: number) => void;
 }
 
-function EditorStar({ system, label, unnamed, active, draggable, onClick, onMove }: StarProps) {
+function EditorStar({ system, label, unnamed, active, draggable, interactive, onClick, onMove }: StarProps) {
   const icon = useMemo(
     () =>
       L.divIcon({
@@ -146,6 +164,7 @@ function EditorStar({ system, label, unnamed, active, draggable, onClick, onMove
       position={toLatLng(system.x, system.y)}
       icon={icon}
       draggable={draggable}
+      interactive={interactive}
       bubblingMouseEvents={false}
       eventHandlers={{
         click: onClick,
@@ -201,6 +220,82 @@ function ProposalLayer({ current, proposal }: { current: MapData; proposal: MapD
   );
 }
 
+/** All region outlines faintly; the one being edited with draggable corner handles. */
+function RegionOutlines({
+  regions,
+  editing,
+  setPolygon,
+}: {
+  regions: MapData["regions"];
+  editing?: string;
+  setPolygon: (id: string, f: (poly: [number, number][]) => [number, number][]) => void;
+}) {
+  const handle = useMemo(() => L.divIcon({ className: "region-handle", iconSize: [12, 12] }), []);
+  const mid = useMemo(() => L.divIcon({ className: "region-handle region-handle--mid", iconSize: [9, 9] }), []);
+  const current = regions.find((r) => r.id === editing);
+  return (
+    <>
+      <Pane name="editor-regions" style={{ zIndex: 404 }}>
+        {regions
+          .filter((r) => r.polygon.length >= 2)
+          .map((r) => (
+            <Polygon
+              key={r.id}
+              positions={r.polygon.map(([x, y]) => toLatLng(x, y))}
+              interactive={false}
+              pathOptions={{
+                color: "#b06ad9",
+                weight: r.id === editing ? 3 : 1.5,
+                dashArray: r.id === editing ? undefined : "6 6",
+                fillOpacity: r.id === editing ? 0.15 : 0.04,
+              }}
+            />
+          ))}
+      </Pane>
+      {current?.polygon.map(([x, y], i) => (
+        <Marker
+          key={`v${i}-${x}-${y}`}
+          position={toLatLng(x, y)}
+          icon={handle}
+          draggable
+          bubblingMouseEvents={false}
+          eventHandlers={{
+            dragend: (e) => {
+              const p = fromLatLng((e.target as L.Marker).getLatLng());
+              setPolygon(current.id, (poly) => poly.map((v, j) => (j === i ? [p.x, p.y] : v)));
+            },
+            contextmenu: (e) => {
+              L.DomEvent.preventDefault(e.originalEvent);
+              setPolygon(current.id, (poly) => poly.filter((_, j) => j !== i));
+            },
+          }}
+        />
+      ))}
+      {current &&
+        current.polygon.length >= 2 &&
+        current.polygon.map(([x, y], i) => {
+          const [nx, ny] = current.polygon[(i + 1) % current.polygon.length];
+          return (
+            <Marker
+              key={`m${i}-${x}-${y}`}
+              position={toLatLng((x + nx) / 2, (y + ny) / 2)}
+              icon={mid}
+              bubblingMouseEvents={false}
+              eventHandlers={{
+                click: () =>
+                  setPolygon(current.id, (poly) => [
+                    ...poly.slice(0, i + 1),
+                    [Math.round(((x + nx) / 2) * 10) / 10, Math.round(((y + ny) / 2) * 10) / 10],
+                    ...poly.slice(i + 1),
+                  ]),
+              }}
+            />
+          );
+        })}
+    </>
+  );
+}
+
 function escapeHtml(s: string) {
   return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 }
@@ -217,6 +312,9 @@ interface ToolbarProps {
   setShowLabels: (v: boolean) => void;
   proposal?: MapData;
   setProposal: (p: MapData | undefined) => void;
+  world: World;
+  editRegion?: string;
+  setEditRegion: (id: string | undefined) => void;
 }
 
 const tools: { id: Tool; label: string; hint: string }[] = [
@@ -224,10 +322,16 @@ const tools: { id: Tool; label: string; hint: string }[] = [
   { id: "add", label: "Add", hint: "Click empty space to add a star" },
   { id: "lane", label: "Lanes", hint: "Click two stars to add/remove a lane (Esc to stop)" },
   { id: "delete", label: "Delete", hint: "Click a star to delete it and its lanes" },
+  {
+    id: "region",
+    label: "Regions",
+    hint: "Drag corners; click a midpoint to add one; right-click a corner to remove it; click the map to append",
+  },
 ];
 
 export function EditorToolbar(props: ToolbarProps) {
   const { draft, tool, setTool, laneStart, setLaneStart, showLabels, setShowLabels, proposal, setProposal } = props;
+  const { world, editRegion, setEditRegion } = props;
   const [status, setStatus] = useState<string>();
   const problems = useMemo(() => checkMap(draft.draft), [draft.draft]);
 
@@ -242,6 +346,7 @@ export function EditorToolbar(props: ToolbarProps) {
       else if (e.key === "2") setTool("add");
       else if (e.key === "3") setTool("lane");
       else if (e.key === "4") setTool("delete");
+      else if (e.key === "5") setTool("region");
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -313,6 +418,37 @@ export function EditorToolbar(props: ToolbarProps) {
         <span>{tools.find((t) => t.id === tool)!.hint}</span>
         {laneStart && <span> · from {laneStart}</span>}
       </div>
+      {tool === "region" && (
+        <div className="editor-bar__row editor-bar__row--small">
+          <select
+            className="btn btn--small"
+            value={editRegion ?? ""}
+            onChange={(e) => setEditRegion(e.target.value || undefined)}
+            aria-label="Region to edit"
+          >
+            <option value="">Choose a region…</option>
+            {draft.draft.regions.map((r) => (
+              <option key={r.id} value={r.id}>
+                {world.regions.get(r.id)?.name ?? r.id} ({r.id}){r.polygon.length ? "" : " · no outline"}
+              </option>
+            ))}
+          </select>
+          {editRegion && (
+            <button
+              className="btn btn--small"
+              onClick={() =>
+                draft.commit((m) => ({
+                  ...m,
+                  regions: m.regions.map((r) => (r.id === editRegion ? { ...r, polygon: [] } : r)),
+                }))
+              }
+            >
+              Clear outline
+            </button>
+          )}
+          {editRegion && <span>{world.regions.get(editRegion)?.systems.length ?? 0} systems inside</span>}
+        </div>
+      )}
       <div className="editor-bar__row editor-bar__row--small">
         <label>
           <input type="checkbox" checked={showLabels} onChange={(e) => setShowLabels(e.target.checked)} /> Labels

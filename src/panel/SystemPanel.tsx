@@ -1,4 +1,4 @@
-import type { World } from "../data/load";
+import { kindLabel, type World } from "../data/load";
 import type { Nation } from "../data/schema";
 
 interface Props {
@@ -6,15 +6,18 @@ interface Props {
   systemId: string;
   focusedNationId?: string;
   onSelectSystem: (id: string) => void;
+  onSelectRegion: (id: string) => void;
   onFocusNation: (id: string | undefined) => void;
   onClose: () => void;
 }
 
 const roleLabel = { capital: "Capital", colony: "Colony", outpost: "Outpost", claim: "Claim" } as const;
 
-export function SystemPanel({ world, systemId, focusedNationId, onSelectSystem, onFocusNation, onClose }: Props) {
+export function SystemPanel(props: Props) {
+  const { world, systemId, focusedNationId, onSelectSystem, onSelectRegion, onFocusNation, onClose } = props;
   const system = world.systems.get(systemId);
   if (!system) return null;
+  const region = system.region ? world.regions.get(system.region) : undefined;
 
   return (
     <aside className="panel" aria-label={`${system.name} details`}>
@@ -27,6 +30,17 @@ export function SystemPanel({ world, systemId, focusedNationId, onSelectSystem, 
           ×
         </button>
       </header>
+
+      {(system.kind || region) && (
+        <div className="badge-row">
+          {system.kind && <span className={`kind-badge kind-badge--${system.kind}`}>{kindLabel[system.kind]}</span>}
+          {region && (
+            <button className="chip chip--region" onClick={() => onSelectRegion(region.geo.id)}>
+              {region.name}
+            </button>
+          )}
+        </div>
+      )}
 
       {system.info?.description && <p className="panel__desc">{system.info.description}</p>}
       {!system.info?.name && <p className="panel__muted">No name on record yet ({system.geo.id}).</p>}

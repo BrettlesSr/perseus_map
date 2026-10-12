@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T21:23:10.073Z",
+  "generatedAt": "2026-10-12T21:46:43.957Z",
   "systems": [
     {
       "id": "sys-0001",
@@ -228,7 +228,7 @@
     },
     {
       "id": "sys-0046",
-      "name": "Shrikeland",
+      "name": "Bafsk",
       "description": ""
     },
     {
@@ -585,8 +585,85 @@
       "id": "sys-0117",
       "name": "Quwamis",
       "description": ""
+    },
+    {
+      "id": "sys-0118",
+      "name": "Te'exxo",
+      "description": ""
+    },
+    {
+      "id": "sys-0119",
+      "name": "Fullbright",
+      "description": ""
+    },
+    {
+      "id": "sys-0120",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0121",
+      "name": "Grestel",
+      "description": ""
+    },
+    {
+      "id": "sys-0122",
+      "name": "Yantar",
+      "description": ""
+    },
+    {
+      "id": "sys-0123",
+      "name": "Novaya Yug-Kamchatsky",
+      "description": ""
     }
   ],
   "nations": [],
-  "presence": []
+  "presence": [],
+  "regions": [
+    {
+      "id": "reg-01",
+      "name": "Far Extremadura",
+      "description": ""
+    },
+    {
+      "id": "reg-02",
+      "name": "Deep Extremadura",
+      "description": ""
+    },
+    {
+      "id": "reg-03",
+      "name": "North Frontier",
+      "description": ""
+    },
+    {
+      "id": "reg-04",
+      "name": "Old Drasan",
+      "description": ""
+    },
+    {
+      "id": "reg-05",
+      "name": "Near Extremadura",
+      "description": ""
+    },
+    {
+      "id": "reg-06",
+      "name": "Corewards River",
+      "description": ""
+    },
+    {
+      "id": "reg-07",
+      "name": "Spinwards Rim",
+      "description": ""
+    },
+    {
+      "id": "reg-08",
+      "name": "Kavin March",
+      "description": ""
+    },
+    {
+      "id": "reg-09",
+      "name": "Rimwards River",
+      "description": ""
+    }
+  ]
 }

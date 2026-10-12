@@ -4,18 +4,25 @@ import type { World } from "../data/load";
 interface Props {
   world: World;
   onSelectSystem: (id: string) => void;
+  onSelectRegion: (id: string) => void;
   onFocusNation: (id: string) => void;
 }
 
-type Result = { kind: "system" | "nation"; id: string; label: string; sub: string };
+type Result = { kind: "system" | "nation" | "region"; id: string; label: string; sub: string };
 
 /** Find a system or nation by name and jump to it. */
-export function Search({ world, onSelectSystem, onFocusNation }: Props) {
+export function Search({ world, onSelectSystem, onSelectRegion, onFocusNation }: Props) {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
 
   const index = useMemo<Result[]>(
     () => [
+      ...[...world.regions.values()].map((r) => ({
+        kind: "region" as const,
+        id: r.geo.id,
+        label: r.name,
+        sub: `Region · ${r.systems.length} systems`,
+      })),
       ...[...world.nations.values()].map((n) => ({
         kind: "nation" as const,
         id: n.id,
@@ -37,6 +44,7 @@ export function Search({ world, onSelectSystem, onFocusNation }: Props) {
 
   const choose = (r: Result) => {
     if (r.kind === "system") onSelectSystem(r.id);
+    else if (r.kind === "region") onSelectRegion(r.id);
     else onFocusNation(r.id);
     setQuery("");
   };
@@ -46,9 +54,9 @@ export function Search({ world, onSelectSystem, onFocusNation }: Props) {
       <input
         className="search__input"
         type="search"
-        placeholder="Search systems or nations…"
+        placeholder="Search systems, regions, nations…"
         value={query}
-        aria-label="Search systems or nations"
+        aria-label="Search systems, regions or nations"
         onChange={(e) => {
           setQuery(e.target.value);
           setActive(0);

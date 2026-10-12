@@ -15,6 +15,7 @@ import Papa from "papaparse";
 import { z } from "zod";
 import {
   GameDataSchema,
+  GameRegionSchema,
   GameSystemSchema,
   MapDataSchema,
   NationSchema,
@@ -27,7 +28,7 @@ const ROOT = resolve(import.meta.dirname, "..");
 const GAME_PATH = resolve(ROOT, "public/data/game.json");
 const MAP_PATH = resolve(ROOT, "public/data/map.json");
 const TABS = ["Systems", "Nations", "Presence"] as const;
-type Tab = (typeof TABS)[number];
+type Tab = (typeof TABS)[number] | "Regions";
 type Row = Record<string, string>;
 
 const inCI = !!process.env.GITHUB_ACTIONS;
@@ -54,6 +55,21 @@ async function readTab(tab: Tab): Promise<string> {
   if (!res.ok || text.trimStart().startsWith("<"))
     throw new Error(`Could not read tab "${tab}" (HTTP ${res.status}). Is the sheet shared as "anyone with the link"?`);
   return text;
+}
+
+/**
+ * A tab the sheet may not have yet. Missing is fine; but asked for a tab name that
+ * doesn't exist, gviz quietly returns the FIRST tab, so only trust it if the header fits.
+ */
+async function readOptionalTab(tab: Tab, idCol: string): Promise<Row[]> {
+  try {
+    const parsed = parseCsv(await readTab(tab));
+    if (parsed.length === 0 || idCol in parsed[0]) return parsed;
+    warn(`${tab} tab ignored: it has no "${idCol}" column`);
+  } catch {
+    console.log(`No ${tab} tab; skipping it.`);
+  }
+  return [];
 }
 
 function parseCsv(text: string): Row[] {
@@ -88,6 +104,10 @@ function rows<T>(tab: Tab, raw: Row[], idCol: string, schema: z.ZodType<T>, map:
 }
 
 const normalizeColor = (c: string) => (c && !c.startsWith("#") ? `#${c}` : c) || undefined;
+const normalizeRegionId = (id: string) => {
+  const m = /^(?:reg-)?(\d+)$/i.exec(id);
+  return m ? `reg-${m[1].padStart(2, "0")}` : id;
+};
 const normalizeSystemId = (id: string) => {
   // accept "42" or "sys-42" in the sheet; store as sys-0042
   const m = /^(?:sys-)?(\d+)$/i.exec(id);
@@ -96,6 +116,7 @@ const normalizeSystemId = (id: string) => {
 
 async function main() {
   const [systemsCsv, nationsCsv, presenceCsv] = await Promise.all(TABS.map(readTab));
+  const regionRows = await readOptionalTab("Regions", "region_id");
 
   const game: GameData = {
     generatedAt: new Date().toISOString(),
@@ -117,6 +138,11 @@ async function main() {
       systemId: normalizeSystemId(r.system_id),
       nationId: r.nation_id,
       role: (r.role || "colony").toLowerCase(),
+    })),
+    regions: rows("Regions", regionRows, "region_id", GameRegionSchema, (r) => ({
+      id: normalizeRegionId(r.region_id),
+      name: r.name,
+      description: r.description ?? "",
     })),
   };
 
@@ -144,7 +170,7 @@ async function main() {
   }
   await writeFile(GAME_PATH, JSON.stringify(game, null, 2) + "\n");
   console.log(
-    `Wrote game.json: ${game.systems.length} systems, ${game.nations.length} nations, ${game.presence.length} presence rows.`,
+    `Wrote game.json: ${game.systems.length} systems, ${game.nations.length} nations, ${game.presence.length} presence rows, ${game.regions.length} regions.`,
   );
 }
 
