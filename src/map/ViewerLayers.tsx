@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { CircleMarker, Pane, Polyline, Tooltip } from "react-leaflet";
 import type { MapData } from "../data/schema";
 import type { World } from "../data/load";
@@ -19,6 +19,14 @@ export function ViewerLayers({ map, world, selectedId, highlighted, showLanes, o
   const zoom = useZoom();
   const scale = 2 ** zoom; // screen px per image px
   const selected = selectedId ? world.systems.get(selectedId) : undefined;
+  const [hoverId, setHoverId] = useState<string>();
+
+  // Detection measures each node's painted edge (ro). Without it, estimate: the fill radius r
+  // plus an outline of about half the typical fill radius (4px around an 8px fill).
+  const outline = useMemo(() => {
+    const rs = map.systems.map((s) => s.r).sort((a, b) => a - b);
+    return rs.length ? 0.5 * rs[Math.floor(rs.length / 2)] : 4;
+  }, [map.systems]);
 
   const lanes = useMemo(
     () =>
@@ -50,31 +58,58 @@ export function ViewerLayers({ map, world, selectedId, highlighted, showLanes, o
           );
         })}
       </Pane>
-      <Pane name="stars" style={{ zIndex: 420 }}>
+      <Pane name="star-rings" style={{ zIndex: 420 }}>
         {[...world.systems.values()].map((s) => {
           const isSelected = s.geo.id === selectedId;
+          const isHover = s.geo.id === hoverId;
           const isNeighbor = selected?.neighbors.includes(s.geo.id) ?? false;
           const isHighlighted = highlighted?.has(s.geo.id) ?? false;
-          // a comfortable hit target that still hugs the painted star when zoomed in
-          const radius = Math.max(9, s.geo.r * scale + 4);
-          const ring = s.ownerColor ?? "#ffffff";
+          // thinner strokes when zoomed out, so the ring never swamps a star a few px across
+          const thin = Math.min(1, Math.max(0.4, scale));
+          const weight = (isSelected || isHighlighted ? 3 : isHover || s.ownerColor ? 2 : 1) * thin;
+          const visible = isSelected || isHover || isHighlighted || isNeighbor || !!s.ownerColor;
+          if (!visible) return null;
+          // the ring's inner edge sits on the painted circle's outer edge, at every zoom
+          const radius = (s.geo.ro ?? s.geo.r + outline) * scale + weight / 2;
+          return (
+            <CircleMarker
+              key={s.geo.id}
+              center={toLatLng(s.geo.x, s.geo.y)}
+              radius={radius}
+              interactive={false}
+              className={isSelected ? "star-ring--selected" : undefined}
+              pathOptions={{
+                color: isSelected || isHover ? "#ffe9a8" : (s.ownerColor ?? "#ffffff"),
+                weight,
+                opacity: isSelected || isHover || isHighlighted ? 1 : s.ownerColor ? 0.8 : 0.6,
+                fill: isHighlighted,
+                fillColor: s.ownerColor ?? "#ffffff",
+                fillOpacity: 0.3,
+              }}
+            />
+          );
+        })}
+      </Pane>
+      <Pane name="star-hits" style={{ zIndex: 425 }}>
+        {[...world.systems.values()].map((s) => {
+          const painted = (s.geo.ro ?? s.geo.r + outline) * scale;
+          // invisible click target: never smaller than a comfortable tap size
+          const radius = Math.max(10, painted + 2);
           return (
             <CircleMarker
               key={s.geo.id}
               center={toLatLng(s.geo.x, s.geo.y)}
               radius={radius}
               bubblingMouseEvents={false}
-              eventHandlers={{ click: () => onSelect(s.geo.id) }}
-              className={`star${isSelected ? " star--selected" : ""}`}
-              pathOptions={{
-                color: isSelected ? "#ffe9a8" : ring,
-                weight: isSelected ? 3 : isHighlighted ? 3 : s.ownerColor ? 2 : 1,
-                opacity: isSelected || isHighlighted ? 1 : s.ownerColor ? 0.75 : isNeighbor ? 0.6 : 0.0,
-                fillColor: s.ownerColor ?? "#ffffff",
-                fillOpacity: isHighlighted ? 0.35 : s.ownerColor ? 0.12 : 0.01,
+              className="star"
+              eventHandlers={{
+                click: () => onSelect(s.geo.id),
+                mouseover: () => setHoverId(s.geo.id),
+                mouseout: () => setHoverId((cur) => (cur === s.geo.id ? undefined : cur)),
               }}
+              pathOptions={{ stroke: false, fillColor: "#ffffff", fillOpacity: 0.01 }}
             >
-              <Tooltip direction="top" offset={[0, -radius]} opacity={1} className="star-tooltip">
+              <Tooltip direction="top" offset={[0, -painted - 4]} opacity={1} className="star-tooltip">
                 {s.name}
               </Tooltip>
             </CircleMarker>

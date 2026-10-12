@@ -72,15 +72,9 @@ button {
 
 .star {
   cursor: pointer;
-  transition: stroke-opacity 120ms, stroke-width 120ms;
 }
 
-.star:hover {
-  stroke: var(--accent) !important;
-  stroke-opacity: 0.9 !important;
-}
-
-.star--selected {
+.star-ring--selected {
   filter: drop-shadow(0 0 6px rgba(255, 233, 168, 0.8));
 }
 

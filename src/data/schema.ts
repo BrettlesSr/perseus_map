@@ -14,6 +14,8 @@ export const MapSystemSchema = z.object({
   y: z.number(),
   /** painted star radius in image pixels; used for the hit target */
   r: z.number().positive().default(8),
+  /** painted outer radius (fill plus any outline), where the selection ring is drawn */
+  ro: z.number().positive().optional(),
   /** from the node's colour on the map */
   kind: z.enum(SystemKinds).optional(),
 });
