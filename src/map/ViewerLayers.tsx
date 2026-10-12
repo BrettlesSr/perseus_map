@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { CircleMarker, Pane, Polyline, Tooltip } from "react-leaflet";
+import { Circle, CircleMarker, Pane, Polyline, Tooltip } from "react-leaflet";
 import type { MapData } from "../data/schema";
 import type { World } from "../data/load";
 import { toLatLng } from "./coords";
@@ -69,10 +69,12 @@ export function ViewerLayers({ map, world, selectedId, highlighted, showLanes, o
           const weight = (isSelected || isHighlighted ? 3 : isHover || s.ownerColor ? 2 : 1) * thin;
           const visible = isSelected || isHover || isHighlighted || isNeighbor || !!s.ownerColor;
           if (!visible) return null;
-          // the ring's inner edge sits on the painted circle's outer edge, at every zoom
-          const radius = (s.geo.ro ?? s.geo.r + outline) * scale + weight / 2;
+          // A Circle's radius is in map units (image px), so Leaflet rescales it in its own
+          // redraw on every zoom, with no lag waiting for React. Only the half-stroke offset,
+          // which keeps the ring's inner edge on the painted edge, is in screen px.
+          const radius = (s.geo.ro ?? s.geo.r + outline) + weight / 2 / scale;
           return (
-            <CircleMarker
+            <Circle
               key={s.geo.id}
               center={toLatLng(s.geo.x, s.geo.y)}
               radius={radius}
