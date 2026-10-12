@@ -157,4 +157,3 @@ scripts/fetch-sheet.ts  sheet -> game.json
 scripts/detect/         OpenCV star/lane/region detection, id matching, synthetic test maps
 .github/workflows/      deploy, hourly sheet sync, map-detection PR bot, CI
 ```
-
