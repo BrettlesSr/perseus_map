@@ -45,6 +45,7 @@ class Star:
     y: float
     r: float
     kind: str | None = None
+    ro: float | None = None  # painted outer radius: fill plus any outline
 
 
 def star_kinds(cfg) -> dict[str | None, list]:
@@ -87,7 +88,10 @@ def detect_stars(hsv: np.ndarray, cfg) -> tuple[list[Star], np.ndarray]:
         # onto the star (glow, lane junctions) can't pull it off-centre
         ys, xs = np.nonzero(d >= r_in * 0.85)
         wts = d[ys, xs]
-        cx, cy = x + float((xs * wts).sum() / wts.sum()), y + float((ys * wts).sum() / wts.sum())
+        # +0.5: pixel i covers [i, i+1) in image coordinates (as the map displays it), so the
+        # average of pixel indices sits half a pixel up-left of the true centre
+        cx = x + float((xs * wts).sum() / wts.sum()) + 0.5
+        cy = y + float((ys * wts).sum() / wts.sum()) + 0.5
         # kind = whichever colour covers most of the dot's core
         core_mask = d >= r_in * 0.3
         kind = max(kind_masks, key=lambda k: int((kind_masks[k][y : y + h, x : x + w][core_mask] > 0).sum()))
@@ -112,6 +116,39 @@ def resolve_star_params(hsv: np.ndarray, cfg) -> dict:
         out["min_radius"] = round(0.45 * med, 1)
     print(f"star scale: median radius {med:.1f}px -> open_px {out['open_px']}, min_radius {out['min_radius']}")
     return out
+
+
+def measure_outer_radii(hsv: np.ndarray, stars: list[Star], cfg) -> None:
+    """Set each star's painted outer radius (fill plus any outline) by walking 32 rays out
+    from the centre through star colours and dark ink until they reach background.
+
+    Node styles differ (white and blue have black outlines, green has none, hostile red has
+    a starburst cutting its fill), so the fill radius alone can't place a ring on the edge.
+    Rays that run along a lane or into a label overshoot; the median ignores them.
+    """
+    paint = color_mask(hsv, [rng for ranges in star_kinds(cfg["stars"]).values() for rng in ranges])
+    paint |= color_mask(hsv, cfg["lanes"]["colors"])
+    # any dark pixel, whatever its saturation: hostile nodes shade from red to black at the rim
+    paint |= cv2.inRange(hsv, np.array([0, 0, 0], np.uint8), np.array([180, 255, 110], np.uint8))
+    h, w = paint.shape
+    angles = np.linspace(0, 2 * np.pi, 32, endpoint=False)
+    for s in stars:
+        edges = []
+        for a in angles:
+            dx, dy = np.cos(a), np.sin(a)
+            last = None
+            for t in np.arange(0.5, s.r * 3 + 12, 0.25):
+                x, y = int(s.x + dx * t), int(s.y + dy * t)  # continuous coords: pixel = floor
+                if not (0 <= x < w and 0 <= y < h):
+                    break
+                if paint[y, x]:
+                    last = t
+                elif last is not None and t - last > 1.5:
+                    # background for more than the anti-aliased band between fill and outline
+                    break
+            if last is not None:
+                edges.append(last)
+        s.ro = round(float(np.median(edges)), 1) if len(edges) >= 8 else None
 
 
 def point_segment_dist(p: np.ndarray, a: np.ndarray, b: np.ndarray) -> np.ndarray:
@@ -149,8 +186,8 @@ def detect_lanes(hsv: np.ndarray, stars: list[Star], cfg) -> tuple[list[tuple[in
             continue
         unit = (b - a) / length
         ts = np.linspace(start, end, max(8, int((end - start) / 2)))
-        xs = np.clip(np.round(a[0] + unit[0] * ts).astype(int), 0, w - 1)
-        ys = np.clip(np.round(a[1] + unit[1] * ts).astype(int), 0, h - 1)
+        xs = np.clip(np.floor(a[0] + unit[0] * ts).astype(int), 0, w - 1)  # pixel containing the point
+        ys = np.clip(np.floor(a[1] + unit[1] * ts).astype(int), 0, h - 1)
         if (mask[ys, xs] > 0).mean() >= cfg["min_coverage"]:
             lanes.append((i, j))
     return lanes, mask
@@ -261,7 +298,10 @@ def reconcile(current: dict | None, stars: list[Star], lanes: list[tuple[int, in
     old_kind = {s["id"]: s.get("kind") for s in old_systems}
     removed = [s for s in old_systems if s["id"] not in kept]
     systems = sorted(
-        ({"id": ids[c], "x": s.x, "y": s.y, "r": s.r, **({"kind": s.kind} if s.kind else {})} for c, s in enumerate(stars)),
+        (
+            {"id": ids[c], "x": s.x, "y": s.y, "r": s.r, **({"ro": s.ro} if s.ro else {}), **({"kind": s.kind} if s.kind else {})}
+            for c, s in enumerate(stars)
+        ),
         key=lambda s: s["id"],
     )
     new_lanes = sorted(sorted([ids[i], ids[j]]) for i, j in lanes)
@@ -475,6 +515,7 @@ def main():
 
     stars, star_mask = detect_stars(hsv, resolve_star_params(hsv, cfg["stars"]))
     lanes, lane_mask = detect_lanes(hsv, stars, cfg["lanes"])
+    measure_outer_radii(hsv, stars, cfg)
 
     current = None
     if not args.fresh and args.current.exists():
