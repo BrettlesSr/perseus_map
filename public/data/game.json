@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T21:46:43.957Z",
+  "generatedAt": "2026-10-12T23:09:58.770Z",
   "systems": [
     {
       "id": "sys-0001",
@@ -14,7 +14,7 @@
     {
       "id": "sys-0003",
       "name": "Cherryh",
-      "description": ""
+      "description": "A world with a toxic native biosphere; people live in domed surface habitats."
     },
     {
       "id": "sys-0004",
@@ -24,7 +24,7 @@
     {
       "id": "sys-0005",
       "name": "Nauzika",
-      "description": ""
+      "description": "A lush world orbiting a binary star, where three species evolved side by side."
     },
     {
       "id": "sys-0006",
@@ -39,7 +39,7 @@
     {
       "id": "sys-0008",
       "name": "Sturm",
-      "description": ""
+      "description": "A heavy-metal-tainted hothouse of micro-continents and archipelagos, first settled as Saloum."
     },
     {
       "id": "sys-0009",
@@ -54,17 +54,17 @@
     {
       "id": "sys-0011",
       "name": "Garibaldi",
-      "description": ""
+      "description": "Once an imperial power and the breadbasket of Extremadura; now the 'Valkyriate Garibaldi', with an active resistance."
     },
     {
       "id": "sys-0012",
       "name": "Vanir",
-      "description": ""
+      "description": "A frozen volcanic world on a trade chokepoint. The Home Fleet holds Vanadis; the capital district is Vanaheim."
     },
     {
       "id": "sys-0013",
       "name": "Mayerling",
-      "description": ""
+      "description": "An alpine world of inland seas and lakes, and a resort for the wealthy."
     },
     {
       "id": "sys-0014",
@@ -89,7 +89,7 @@
     {
       "id": "sys-0018",
       "name": "Azadestan",
-      "description": ""
+      "description": "The 'Valkyriate Azadestan': a Chosen client in an uneasy ceasefire with the locals."
     },
     {
       "id": "sys-0019",
@@ -99,7 +99,7 @@
     {
       "id": "sys-0020",
       "name": "Lycia",
-      "description": ""
+      "description": "A warm, rugged, Earthlike world split three ways between rival powers."
     },
     {
       "id": "sys-0021",
@@ -109,7 +109,7 @@
     {
       "id": "sys-0022",
       "name": "Placidia",
-      "description": ""
+      "description": "A tideless ocean world under a dim star, where Terran and native life are clashing."
     },
     {
       "id": "sys-0023",
@@ -124,7 +124,7 @@
     {
       "id": "sys-0025",
       "name": "Hebonaidd",
-      "description": ""
+      "description": "Still scarred by a nuclear war a century before the USN arrived."
     },
     {
       "id": "sys-0026",
@@ -154,7 +154,7 @@
     {
       "id": "sys-0031",
       "name": "Caxias",
-      "description": ""
+      "description": "The 'Valkyriate Caxias': a Chosen puppet state where local factions are fighting back."
     },
     {
       "id": "sys-0032",
@@ -174,7 +174,7 @@
     {
       "id": "sys-0035",
       "name": "Han Shan",
-      "description": ""
+      "description": "The Combined Republic of Han Shan-Azania: two rival colonial governments sharing one world. Far Stars Federation member."
     },
     {
       "id": "sys-0036",
@@ -189,7 +189,7 @@
     {
       "id": "sys-0038",
       "name": "Atalanta",
-      "description": ""
+      "description": "The United Queenly Republics of Atalanta, a Far Stars Federation member."
     },
     {
       "id": "sys-0039",
@@ -199,7 +199,7 @@
     {
       "id": "sys-0040",
       "name": "Nouvelle Liberte",
-      "description": ""
+      "description": "The People's Federation of Nouvelle Liberté, a newborn democracy after junta rule and Far Stars Federation member. Its state arms company is SFA Mfecane."
     },
     {
       "id": "sys-0041",
@@ -224,7 +224,7 @@
     {
       "id": "sys-0045",
       "name": "Mu",
-      "description": ""
+      "description": "A borderline world that has only just finished a century of terraforming. Its twin moons host bases and stations."
     },
     {
       "id": "sys-0046",
@@ -234,12 +234,12 @@
     {
       "id": "sys-0047",
       "name": "Bamberia",
-      "description": ""
+      "description": "A fertile plantation world exporting tobacco and fruit."
     },
     {
       "id": "sys-0048",
       "name": "Velyke Nebo",
-      "description": ""
+      "description": "The Republic of Velyke Nebo, a unitary presidential democracy and Far Stars Federation member; birthplace of Mriya Interstellar Aerospace."
     },
     {
       "id": "sys-0049",
@@ -264,7 +264,7 @@
     {
       "id": "sys-0053",
       "name": "al-Majid",
-      "description": ""
+      "description": "The al-Majid Spaceport Authority, a Far Stars Federation member."
     },
     {
       "id": "sys-0054",
@@ -299,12 +299,12 @@
     {
       "id": "sys-0060",
       "name": "Refuge",
-      "description": ""
+      "description": "Its surface is held by automated defences; its people live in fortified vaults."
     },
     {
       "id": "sys-0061",
       "name": "Montana",
-      "description": ""
+      "description": "Tectonically active and rich in minerals, with a modest population."
     },
     {
       "id": "sys-0062",
@@ -324,12 +324,12 @@
     {
       "id": "sys-0065",
       "name": "Chengdu",
-      "description": ""
+      "description": "The Chengdu Planetary Union, a technocratic centralised state and Far Stars Federation member."
     },
     {
       "id": "sys-0066",
       "name": "Far Away",
-      "description": ""
+      "description": "The Free State of Far Away, a loose federation and the oldest human state in the Cluster. Far Stars Federation member."
     },
     {
       "id": "sys-0067",
@@ -339,7 +339,7 @@
     {
       "id": "sys-0068",
       "name": "Fuso",
-      "description": ""
+      "description": "The Kingdom of Fuso, a corporate constitutional monarchy and Far Stars Federation member."
     },
     {
       "id": "sys-0069",
@@ -354,7 +354,7 @@
     {
       "id": "sys-0071",
       "name": "Ctesibius",
-      "description": ""
+      "description": "A partitioned world: the Universities hold the campus territories, rival states the rest."
     },
     {
       "id": "sys-0072",
@@ -384,7 +384,7 @@
     {
       "id": "sys-0077",
       "name": "Decatur",
-      "description": ""
+      "description": "The Decatur Riparian Authority, a confederation and Far Stars Federation member."
     },
     {
       "id": "sys-0078",
@@ -399,7 +399,7 @@
     {
       "id": "sys-0080",
       "name": "Bellevue",
-      "description": ""
+      "description": "The Gubierno Cibil de Bellevue, a constitutional monarchy and core world of the Far Stars Federation."
     },
     {
       "id": "sys-0081",
@@ -419,7 +419,7 @@
     {
       "id": "sys-0084",
       "name": "Abzu",
-      "description": ""
+      "description": "A storm-wracked pre-garden world with arcology cities, rich in tantalum."
     },
     {
       "id": "sys-0085",
@@ -444,17 +444,17 @@
     {
       "id": "sys-0089",
       "name": "Poincare",
-      "description": ""
+      "description": "A terraformed world held stable by orbital mirrors."
     },
     {
       "id": "sys-0090",
       "name": "Al'Kesh",
-      "description": ""
+      "description": "A karst world whose cities are built in caverns beneath the surface. Six jump lanes meet here."
     },
     {
       "id": "sys-0091",
       "name": "Inari",
-      "description": ""
+      "description": "An old, eroded world, now an agricultural and industrial powerhouse."
     },
     {
       "id": "sys-0092",
@@ -479,7 +479,7 @@
     {
       "id": "sys-0096",
       "name": "Tempest",
-      "description": ""
+      "description": "A metal-rich hothouse world."
     },
     {
       "id": "sys-0097",
@@ -489,7 +489,7 @@
     {
       "id": "sys-0098",
       "name": "San Jacinto",
-      "description": ""
+      "description": "A hot, dry world rich in pharmaceutical resources."
     },
     {
       "id": "sys-0099",
@@ -509,7 +509,7 @@
     {
       "id": "sys-0102",
       "name": "Neos Athos",
-      "description": ""
+      "description": "A harsh, sparsely populated world of monasteries."
     },
     {
       "id": "sys-0103",
@@ -534,12 +534,12 @@
     {
       "id": "sys-0107",
       "name": "Sweetwater",
-      "description": ""
+      "description": "A cluster of habitats at a major jump-point nexus."
     },
     {
       "id": "sys-0108",
       "name": "Aurora",
-      "description": ""
+      "description": "A temperate, mostly ocean world in the habitable zone, home to some of the largest shipyards in the sector."
     },
     {
       "id": "sys-0109",
@@ -549,7 +549,7 @@
     {
       "id": "sys-0110",
       "name": "Techerlen",
-      "description": ""
+      "description": "Once the Gem colony of Providence. The capital, Borealis City, sits on a mega-oasis at the north pole."
     },
     {
       "id": "sys-0111",
@@ -559,7 +559,7 @@
     {
       "id": "sys-0112",
       "name": "Otuken",
-      "description": ""
+      "description": "Hot and tectonically active: high forested plateaus over desert lowlands. Homeworld of the avian Avesites."
     },
     {
       "id": "sys-0113",
@@ -574,7 +574,7 @@
     {
       "id": "sys-0115",
       "name": "Jangala",
-      "description": ""
+      "description": "A deadly hothouse jungle world; its people live in corporate arcologies."
     },
     {
       "id": "sys-0116",
@@ -584,7 +584,7 @@
     {
       "id": "sys-0117",
       "name": "Quwamis",
-      "description": ""
+      "description": "An ecumenopolis that appears abandoned."
     },
     {
       "id": "sys-0118",
@@ -594,7 +594,7 @@
     {
       "id": "sys-0119",
       "name": "Fullbright",
-      "description": ""
+      "description": "Fullbright Station: a traffic-control terminal grown into a trade hub and space-city."
     },
     {
       "id": "sys-0120",
@@ -617,8 +617,650 @@
       "description": ""
     }
   ],
-  "nations": [],
-  "presence": [],
+  "nations": [
+    {
+      "id": "adrian",
+      "name": "Adrian Federation",
+      "player": "Secondskink",
+      "color": "#4f7cff",
+      "flagUrl": "",
+      "description": "A parliamentary republic on Mu, a century-long terraforming project that had only just become habitable when the wormhole collapsed. Project staff and early colonists improvised a government, and isolated USN squadrons and veterans joined them, bringing trained crews and a working bureaucracy.\n\nLong content with a small, obsolete military, the Federation rearmed after Garibaldi fell to the Valkyries, borrowing heavily from the Far Stars Federation to pay for new ships and weapons research.",
+      "type": "player",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125491109"
+    },
+    {
+      "id": "twelve-wings",
+      "name": "The Twelve Wings Khaganate",
+      "player": "BeRzErKeR",
+      "color": "#e0a030",
+      "flagUrl": "",
+      "description": "A neo-feudal empire of avian aliens, the Otukeni Avesites, ruled by a tribal warrior aristocracy under a King-of-Kings, with tribal kings, clan chieftains and household heads beneath. Their clans grew from the great nesting roosts on Otuken's forested plateaus.\n\nAfter an immensely long stone age they rose quickly to spaceflight, and when the jump drive came within reach, clan warbands pushed straight into neighbouring systems. Charisma, martial strength and a strict honour code define their society; population pressure and internal rivalry keep the Khaganate openly expansionist.",
+      "type": "player",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125493590"
+    },
+    {
+      "id": "techerlen",
+      "name": "Techerlen Republic",
+      "player": "Wordsmither",
+      "color": "#2bb3a3",
+      "flagUrl": "",
+      "description": "A dominant-party democracy of two peoples: the Koravet, sloth-like herbivores whose exiles built a civilisation here over centuries, and the Gems, hardlight machine constructs whose empire conquered the system as the colony of Providence and imposed apartheid.\n\nWhen the Gem Empire collapsed, officers and pragmatic officials staged a coup, ended apartheid and founded a parliamentary republic. The Progress and Development Party has governed ever since, pairing state capitalism and fast growth with a slow reconciliation into a shared national identity.",
+      "type": "player",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125606252"
+    },
+    {
+      "id": "vanadis",
+      "name": "Vanadis Defense Coalition",
+      "player": "Silence",
+      "color": "#7fb8e6",
+      "flagUrl": "",
+      "description": "Vanir, a frozen volcanic world settled as a joint terraforming project on a trade chokepoint, was long run by a light-touch commission that let its settlements govern themselves, drawing defeated groups from across human space.\n\nWhen the Freyans invaded after conquering Garibaldi, the planetary Security Agency seized power, lured the invaders into a trap and forced a ceasefire. Now ruling openly as the Vanadis Defense Coalition, it is preparing for the Freyans to return.",
+      "type": "player",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125620466"
+    },
+    {
+      "id": "ctesibius",
+      "name": "The Universities of Ctesibius",
+      "player": "BrettlesSr",
+      "color": "#b06ad9",
+      "flagUrl": "https://i.postimg.cc/CdTv7z78/download-(3).png",
+      "description": "An academic oligarchy of transhumanists - human, though they would rather you didn't say so. Ctesibius was a haven for transhumanist research while the USN kept the peace with baseline settlers; after the wormhole closed and the USN withdrew, the planet was partitioned and fought over for nearly a century.\n\nThe transhumanists consolidated around the university campuses, which became a self-reliant nation devoted to knowledge, alien artefacts and reverse-engineering, with cybernetics built into its fleet and army.",
+      "type": "player",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125732369"
+    },
+    {
+      "id": "alkesh",
+      "name": "The Principality of Al'Kesh",
+      "player": "LordNecromancer",
+      "color": "#c9a227",
+      "flagUrl": "",
+      "description": "A constitutional monarchy whose nobility dominates politics within the limits of its citizens' rights. Its people come from a distant interstellar kingdom whose first major election was torn apart by foreign money, setting off civil war and economic collapse.\n\nA moderate noble and distant royal cousin, later the First Prince, borrowed heavily to move his loyal followers and buy advanced research, and settled them on Al'Kesh, where six jump lanes meet. The Principality keeps to autarky so as not to repeat the Kingdom's fate.",
+      "type": "player",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125749241"
+    },
+    {
+      "id": "aurora",
+      "name": "Grand Duchy of Aurora",
+      "player": "Laurysm",
+      "color": "#e8758a",
+      "flagUrl": "",
+      "description": "A constitutional monarchy on Aurora, a temperate, mostly ocean world colonised by a company for its beauty and its value as a trade hub. When the wormhole collapsed, trade dried up and the shipyards stopped; protests ended in a settlement between citizens, company and military that made the company's leader the first Grand Duke.\n\nIts shipyards are among the largest in the sector, but its military is underfunded and corrupt. The new Grand Duchesse, Alice Duquesne, has launched a crash rebuilding programme.",
+      "type": "player",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125793080"
+    },
+    {
+      "id": "nauzika",
+      "name": "Hayabaya noNauzika",
+      "player": "Hasgriu",
+      "color": "#ff9ed2",
+      "flagUrl": "",
+      "description": "The Peoples of Nauzika: a megacorporate welfare state on a lush world around a binary star, where three species - the slime-like Mururi, the tailed humanoid Ren and the spherical Yojeo - evolved side by side and have long lived together with little conflict.\n\nTheir trade guilds and cooperatives grew into planet-wide corporations that now run nearly every part of life, from lifelong employment to fierce brand loyalty. The economy rests on services, knowledge work, media and tourism.",
+      "type": "player",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125795129"
+    },
+    {
+      "id": "bafsk",
+      "name": "The Bafsk Pact",
+      "player": "Shrike",
+      "color": "#8a9a5b",
+      "flagUrl": "",
+      "description": "A militarised autarky with a fearsome reputation as a merchant of death. It controls a chokepoint and two client states, holds the satellite worlds of Yantar, Grestel and Novaya Yug-Kamchatsky, and still carries the debts of a lost trade war. Its forces lean on armour, landships and a battle group.\n\n(The sign-up post is stats only, with no written background yet.)",
+      "type": "player",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125973095"
+    },
+    {
+      "id": "chosen",
+      "name": "Land of the Chosen of Freya",
+      "player": "",
+      "color": "#d24a4a",
+      "flagUrl": "",
+      "description": "Das Land der Erwählten von Freya: a fascist, transhumanist, slave-holding dictatorship of heavily augmented, genetically engineered women who believe they are destined to rule humanity. Their ancestors, a fringe neo-pagan movement, tried to build a caste society on Centaur until their neighbours crushed them, and the survivors fled through the wormhole.\n\nThey conquered Sturm, shattered Garibaldi's forces with heavy missiles and a strong battleline, and now rule Garibaldi, Azadestan and Caxias as 'Valkyriates', client states where resistance continues. Their warships use unique cloaking Spider Drives.",
+      "type": "hostile",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125671064"
+    },
+    {
+      "id": "fsf",
+      "name": "The Far Stars Federation",
+      "player": "",
+      "color": "#3d6fd9",
+      "flagUrl": "",
+      "description": "A democratic federation of ten worlds, formed about a generation ago for mutual defence and economic support, and the strongest power in the Perseus Cluster. Every decision needs consensus among very different member states, so it acts slowly, preferring soft power but willing to fight when it must.\n\nIt has recently begun to split into Opportunist, Interventionist, Isolationist and Neutral factions competing for influence. The three great Transstellar arms corporations - Mriya Interstellar Aerospace, SFA Mfecane and Lone Star Dynamics - are headquartered in its space.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125739146"
+    },
+    {
+      "id": "abzu",
+      "name": "The Universal Kingdom of Abzu",
+      "player": "",
+      "color": "#1f9e8a",
+      "flagUrl": "",
+      "description": "One of the wealthiest states in the Perseus Cluster, run like an ancient Mesopotamian kingdom: a theocratic monarchy whose king is also its high priest, with a palace economy managed by a vast bureaucracy of scribal priests and a warrior aristocracy leading a space force equipped with the best foreign hardware.\n\nTantalum exports keep it rich. Outsiders see it as half theatre, sustained by wealth and regional influence; the Far Stars Federation keeps an ambassador at its court.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125826881"
+    },
+    {
+      "id": "bamberia",
+      "name": "Republic of Bamberia",
+      "player": "",
+      "color": "#9bbf4a",
+      "flagUrl": "",
+      "description": "An aristocratic republic grown rich on tobacco and fruit exports, with the wealth held by the planter families. Tension runs between those families, the local church and the Muslim settlers of the second continent.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "cherryh",
+      "name": "Union of Cherryh",
+      "player": "",
+      "color": "#5fb87a",
+      "flagUrl": "",
+      "description": "A technocratic oligarchy and centre of learning that took in refugees, then used mass cloning and sleep-learning to build a two-tier caste society. Its toxic native biosphere keeps everyone in domed surface habitats.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "drasan",
+      "name": "Drasanni Empire",
+      "player": "",
+      "color": "#3f9e5a",
+      "flagUrl": "",
+      "description": "A monarchical federation of Drasani kingdoms: a clannish, honour-bound, warlike people who joined the USN and were a rising power in the Cluster. A civil war after the wormhole collapse has only recently ended, and the Empire has many independent colonies.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "hebonaidd",
+      "name": "United Hebonaidd",
+      "player": "",
+      "color": "#7ccf9a",
+      "flagUrl": "",
+      "description": "A planetary confederation of the Hebonai, a cautious, elf-like people good at collective problem-solving. They nuked themselves a century before the USN arrived; the world is still divided into states, but they present a united front, which helped them weather the wormhole collapse.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "inari",
+      "name": "Inari",
+      "player": "",
+      "color": "#6aa84f",
+      "flagUrl": "",
+      "description": "A unitary parliamentary constitutional monarchy on an old, eroded world. Founded as an ultra-right colony, its regime was replaced through military intervention and migration. Now an agricultural and industrial powerhouse, nominally pacifist.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "jangala",
+      "name": "Jangalan Corporate State",
+      "player": "",
+      "color": "#4c9a2a",
+      "flagUrl": "",
+      "description": "A megacorp-run city-state on a deadly hothouse jungle world. Settlers were forced into corporate-funded arcologies, and those backers now control the extraction of raw pharmaceuticals and organics.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "kavinka",
+      "name": "Kavinka Star Empire",
+      "player": "",
+      "color": "#c27c2c",
+      "flagUrl": "",
+      "description": "A competitive feudal kingdom of the Kavinka: aggressive, territorial, tiger-like centauroid predators who are also patient and daring - in another timeline, perhaps a major threat to humanity. Its worlds also include Hy-drana.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "lycia-ionian",
+      "name": "Ionian Accords",
+      "player": "",
+      "color": "#88b04b",
+      "flagUrl": "",
+      "description": "One of three powers locked in stalemate on Lycia, a warm, rugged, Earthlike world: the democratic Ionian Accords, alongside the Ionian Accords, the Kingdom of Troy, the Free Citizen's Union.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "lycia-troy",
+      "name": "Kingdom of Troy",
+      "player": "",
+      "color": "#b0a04b",
+      "flagUrl": "",
+      "description": "One of three powers locked in stalemate on Lycia, a warm, rugged, Earthlike world: the monarchist Kingdom of Troy, alongside the Ionian Accords, the Kingdom of Troy, the Free Citizen's Union.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "lycia-fcu",
+      "name": "Free Citizen's Union",
+      "player": "",
+      "color": "#b06b4b",
+      "flagUrl": "",
+      "description": "One of three powers locked in stalemate on Lycia, a warm, rugged, Earthlike world: the socialist Free Citizen's Union, alongside the Ionian Accords, the Kingdom of Troy, the Free Citizen's Union.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "mayerling",
+      "name": "Republik Mayerling",
+      "player": "",
+      "color": "#7fbfb0",
+      "flagUrl": "",
+      "description": "A loose confederation of cantons on an alpine world of inland seas and lakes. Much of the planet is a resort for the wealthy, and the government stays strictly neutral.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "montana",
+      "name": "Montana Free State",
+      "player": "",
+      "color": "#a3b86c",
+      "flagUrl": "",
+      "description": "A weak central government on a tectonically active, resource-rich world with a modest population. Foreign corporations have taken economic and political control and run its mineral extraction.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "neos-athos",
+      "name": "Holy State of Neos Athos",
+      "player": "",
+      "color": "#8fa07a",
+      "flagUrl": "",
+      "description": "A loose confederation of monasteries and their supporting communities on a harsh, sparsely populated world founded as a male-only colony. Women may visit the settlements and spaceports but not the monasteries.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "placidia",
+      "name": "United Placidian States",
+      "player": "",
+      "color": "#4fa3a5",
+      "flagUrl": "",
+      "description": "A unitary federal republic on a tideless ocean world under a dim star. Terran life is outcompeting native life, and local pathogens spreading into Terran fauna are raising fears for humans too.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "poincare",
+      "name": "Outer Rim Alliance",
+      "player": "",
+      "color": "#5c8f3a",
+      "flagUrl": "",
+      "description": "A military junta on a terraformed world held stable by orbital mirrors. A doomsday cult settled it, but its backers died before their supplies arrived; the refugees who came instead survived on the seeded industry. A growing power that has sent aid to nearby worlds.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "quwamis",
+      "name": "Quwan Empire",
+      "player": "",
+      "color": "#4d8c57",
+      "flagUrl": "",
+      "description": "A psychic caste empire ruled by telepathic nobles, who claim to have created humanity and consider themselves its superiors; their castes differ sharply in appearance. Quwamis is an ecumenopolis that appears abandoned. Its other worlds include Yscanda, Alfina, Quvari Quandan and Yhule.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "refuge",
+      "name": "Refuge Holdfast",
+      "player": "",
+      "color": "#6f8f6f",
+      "flagUrl": "",
+      "description": "A xenophobic coalition of underground settlements. Traumatised by pirate and alien raids, its people retreated into fortified vaults; automated defences hold the surface, and trade happens only at a few spaceports.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "san-jacinto",
+      "name": "Free State of San Jacinto",
+      "player": "",
+      "color": "#9a8f3a",
+      "flagUrl": "",
+      "description": "A weak central government on a hot, dry world rich in pharmaceutical resources. Its independent-minded people have produced narcoterrorism and a movement of caudillo strongmen.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "sweetwater",
+      "name": "Sweetwater Settlement Union Group",
+      "player": "",
+      "color": "#3fae9a",
+      "flagUrl": "",
+      "description": "A loose federation of space settlements that began as a refugee dumping ground of hastily built habitats - until its system turned out to be a major jump-point nexus. Rich on trade, it keeps relations with almost everyone.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "tempest",
+      "name": "Tempesti Republic",
+      "player": "",
+      "color": "#5aa36e",
+      "flagUrl": "",
+      "description": "An isolationist direct democracy on a metal-rich hothouse world, founded by separatist feminists. Later refugees were admitted on condition that the original female-dominated culture and genetic caste system stayed.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "teexxo",
+      "name": "Te'exxo Imperial State",
+      "player": "",
+      "color": "#6b8e23",
+      "flagUrl": "",
+      "description": "Also called the Te'exxo Shogunate: a militarised state where an overpowered military steers a puppet civilian government. It re-formed after the civil war that followed the wormhole crisis, with a nationalist culture built on its eco-zealot founders and their reworked feud with deserting USN units. It wants new colony sites, and would accept a short war to get them.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125814530"
+    },
+    {
+      "id": "pragmatic",
+      "name": "Pragmatic Concern",
+      "player": "",
+      "color": "#2e8b57",
+      "flagUrl": "",
+      "description": "A corporate state on Fullbright Station, a traffic-control terminal that grew into a trade hub and then a space-city. About two million shareholders vote on a sprawling commercial enterprise; some eighteen million others simply live under it. Its diplomacy is to tie neighbouring economies to its ventures, and it has freighters and money to invest or rent out.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125814530"
+    },
+    {
+      "id": "sword-worlds",
+      "name": "The Sword Worlds",
+      "player": "",
+      "color": "#8c8c8c",
+      "flagUrl": "",
+      "description": "A loose realm under a High King, location unknown, believed to descend from old Earth industrial, intelligence and military figures. Its combined industry may exceed any single world's. The High King's power rests on raid-and-trade expeditions that everyone else calls piracy. Known worlds: Excalibur, Tizona, Kusanagi, Zulfiqar, Durandal, Gram and Nandaka.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125402867"
+    },
+    {
+      "id": "designation-12",
+      "name": "Designation 12",
+      "player": "",
+      "color": "#a0a0a0",
+      "flagUrl": "",
+      "description": "Humanity's twelfth alien contact, and its least successful. Tiger-like beings on a praying-mantis body plan with extensive cybernetics, whose outlook is alien enough that diplomacy keeps failing, often violently. Not expansionist as such, but they have driven human settlers out of nearby systems. Their materials science is remarkable.",
+      "type": "npc",
+      "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125814530"
+    }
+  ],
+  "presence": [
+    {
+      "systemId": "sys-0003",
+      "nationId": "cherryh",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0005",
+      "nationId": "nauzika",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0008",
+      "nationId": "chosen",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0011",
+      "nationId": "chosen",
+      "role": "client"
+    },
+    {
+      "systemId": "sys-0012",
+      "nationId": "vanadis",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0013",
+      "nationId": "mayerling",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0016",
+      "nationId": "drasan",
+      "role": "colony"
+    },
+    {
+      "systemId": "sys-0018",
+      "nationId": "chosen",
+      "role": "client"
+    },
+    {
+      "systemId": "sys-0020",
+      "nationId": "lycia-fcu",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0020",
+      "nationId": "lycia-ionian",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0020",
+      "nationId": "lycia-troy",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0022",
+      "nationId": "placidia",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0025",
+      "nationId": "hebonaidd",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0029",
+      "nationId": "drasan",
+      "role": "colony"
+    },
+    {
+      "systemId": "sys-0031",
+      "nationId": "chosen",
+      "role": "client"
+    },
+    {
+      "systemId": "sys-0035",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0038",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0040",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0043",
+      "nationId": "drasan",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0045",
+      "nationId": "adrian",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0046",
+      "nationId": "bafsk",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0047",
+      "nationId": "bamberia",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0048",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0053",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0058",
+      "nationId": "drasan",
+      "role": "colony"
+    },
+    {
+      "systemId": "sys-0060",
+      "nationId": "refuge",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0061",
+      "nationId": "montana",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0065",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0066",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0068",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0071",
+      "nationId": "ctesibius",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0077",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0080",
+      "nationId": "fsf",
+      "role": "member"
+    },
+    {
+      "systemId": "sys-0084",
+      "nationId": "abzu",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0086",
+      "nationId": "drasan",
+      "role": "colony"
+    },
+    {
+      "systemId": "sys-0089",
+      "nationId": "poincare",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0090",
+      "nationId": "alkesh",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0091",
+      "nationId": "inari",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0093",
+      "nationId": "kavinka",
+      "role": "colony"
+    },
+    {
+      "systemId": "sys-0096",
+      "nationId": "tempest",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0098",
+      "nationId": "san-jacinto",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0101",
+      "nationId": "drasan",
+      "role": "colony"
+    },
+    {
+      "systemId": "sys-0102",
+      "nationId": "neos-athos",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0104",
+      "nationId": "kavinka",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0106",
+      "nationId": "kavinka",
+      "role": "colony"
+    },
+    {
+      "systemId": "sys-0107",
+      "nationId": "sweetwater",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0108",
+      "nationId": "aurora",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0110",
+      "nationId": "techerlen",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0112",
+      "nationId": "twelve-wings",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0115",
+      "nationId": "jangala",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0117",
+      "nationId": "quwamis",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0118",
+      "nationId": "teexxo",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0119",
+      "nationId": "pragmatic",
+      "role": "capital"
+    },
+    {
+      "systemId": "sys-0121",
+      "nationId": "bafsk",
+      "role": "colony"
+    },
+    {
+      "systemId": "sys-0122",
+      "nationId": "bafsk",
+      "role": "colony"
+    },
+    {
+      "systemId": "sys-0123",
+      "nationId": "bafsk",
+      "role": "colony"
+    }
+  ],
   "regions": [
     {
       "id": "reg-01",

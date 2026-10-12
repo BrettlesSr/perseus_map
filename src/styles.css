@@ -244,6 +244,7 @@ button {
 }
 
 .panel__desc {
+  white-space: pre-line; /* keep paragraph breaks from the sheet */
   margin: 12px 0 0;
 }
 
@@ -319,6 +320,7 @@ button {
 }
 
 .nation__desc {
+  white-space: pre-line;
   margin: 8px 0 0;
 }
 

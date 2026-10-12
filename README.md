@@ -75,9 +75,9 @@ download.
    in, the 9 regions with their names, and empty Nations and Presence tabs with the right headers.
    - **Systems**: `system_id`, `name` (may be blank for unnamed waypoints), `description`
    - **Nations**: `nation_id`, `name`, `player`, `color` (`#rrggbb`), `flag_url`,
-     `description`, `forum_url`
+     `description`, `type` (`player`, `npc` or `hostile`), `source_url` (link to the forum post it comes from)
    - **Presence**: `system_id`, `nation_id`, `role` (one row per nation per system; `role` is
-     `capital`, `colony`, `outpost` or `claim`)
+     `capital`, `colony`, `member` (of a federation), `client`, `outpost` or `claim`)
    - **Regions** (optional): `region_id`, `name`, `description`. Which systems are in a region
      comes from its outline on the map, not from the sheet.
 

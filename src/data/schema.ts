@@ -50,7 +50,9 @@ export type SystemKind = (typeof SystemKinds)[number];
 
 // ---- Lore: owned by the GMs' Google Sheet -> public/data/game.json
 
-export const PresenceRoles = ["capital", "colony", "outpost", "claim"] as const;
+/** member: a state in a federation (Far Stars); client: a client or puppet state */
+export const PresenceRoles = ["capital", "colony", "member", "client", "outpost", "claim"] as const;
+export const NationTypes = ["player", "npc", "hostile"] as const;
 
 export const GameSystemSchema = z.object({
   id: SystemIdSchema,
@@ -66,7 +68,9 @@ export const NationSchema = z.object({
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/, "colour must be #rrggbb").default("#cccccc"),
   flagUrl: z.string().default(""),
   description: z.string().default(""),
-  forumUrl: z.string().default(""),
+  type: z.enum(NationTypes).default("npc"),
+  /** link to the forum post the nation's details come from */
+  sourceUrl: z.string().default(""),
 });
 
 export const PresenceSchema = z.object({
@@ -93,6 +97,7 @@ export type GameSystem = z.infer<typeof GameSystemSchema>;
 export type Nation = z.infer<typeof NationSchema>;
 export type Presence = z.infer<typeof PresenceSchema>;
 export type PresenceRole = (typeof PresenceRoles)[number];
+export type NationType = (typeof NationTypes)[number];
 export type GameData = z.infer<typeof GameDataSchema>;
 export type GameRegion = z.infer<typeof GameRegionSchema>;
 

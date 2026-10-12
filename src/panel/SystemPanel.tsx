@@ -11,7 +11,15 @@ interface Props {
   onClose: () => void;
 }
 
-const roleLabel = { capital: "Capital", colony: "Colony", outpost: "Outpost", claim: "Claim" } as const;
+const roleLabel = {
+  capital: "Capital",
+  colony: "Colony",
+  member: "Member state",
+  client: "Client state",
+  outpost: "Outpost",
+  claim: "Claim",
+} as const;
+const typeLabel = { player: "Player nation", npc: "NPC", hostile: "Hostile NPC" } as const;
 
 export function SystemPanel(props: Props) {
   const { world, systemId, focusedNationId, onSelectSystem, onSelectRegion, onFocusNation, onClose } = props;
@@ -114,6 +122,8 @@ function NationCard({ nation, role, systemCount, focused, onFocus }: CardProps) 
           <span className="nation__name">{nation.name}</span>
           <span className="nation__meta">
             {role}
+            {" · "}
+            {typeLabel[nation.type]}
             {nation.player && <> · played by {nation.player}</>}
           </span>
         </div>
@@ -123,9 +133,9 @@ function NationCard({ nation, role, systemCount, focused, onFocus }: CardProps) 
         <button className={`link-btn${focused ? " link-btn--on" : ""}`} onClick={onFocus}>
           {focused ? "Hide territory" : `Show territory (${systemCount})`}
         </button>
-        {nation.forumUrl && (
-          <a className="link-btn" href={nation.forumUrl} target="_blank" rel="noreferrer">
-            Forum thread ↗
+        {nation.sourceUrl && (
+          <a className="link-btn" href={nation.sourceUrl} target="_blank" rel="noreferrer">
+            Source post ↗
           </a>
         )}
       </div>

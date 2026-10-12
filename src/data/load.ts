@@ -76,7 +76,7 @@ export interface World {
   nationSystems: Map<string, string[]>;
 }
 
-const roleOrder: Record<PresenceRole, number> = { capital: 0, colony: 1, outpost: 2, claim: 3 };
+const roleOrder: Record<PresenceRole, number> = { capital: 0, colony: 1, member: 2, client: 3, outpost: 4, claim: 5 };
 
 /** Even-odd ray casting; polygon in image pixels. */
 export function pointInPolygon(x: number, y: number, poly: [number, number][]): boolean {
@@ -110,7 +110,7 @@ export function buildWorld(map: MapData, game: GameData): World {
   const systems = new Map<string, SystemView>();
   for (const geo of map.systems) {
     const presence = (presenceBySystem.get(geo.id) ?? []).sort((a, b) => roleOrder[a.role] - roleOrder[b.role]);
-    const holder = presence.find((p) => p.role === "capital" || p.role === "colony");
+    const holder = presence.find((p) => p.role !== "outpost" && p.role !== "claim");
     systems.set(geo.id, {
       geo,
       info: info.get(geo.id),

@@ -132,7 +132,9 @@ async function main() {
       color: normalizeColor(r.color ?? ""),
       flagUrl: r.flag_url || undefined,
       description: r.description || undefined,
-      forumUrl: r.forum_url || undefined,
+      type: (r.type || "npc").toLowerCase(),
+      // forum_url was the column's original name
+      sourceUrl: r.source_url || r.forum_url || undefined,
     })),
     presence: rows("Presence", parseCsv(presenceCsv), "system_id", PresenceSchema, (r) => ({
       systemId: normalizeSystemId(r.system_id),
