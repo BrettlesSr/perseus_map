@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.local
+.venv/
+__pycache__/
+.DS_Store
+
+# detection outputs (committed only via the detect-map PR workflow)
+detect-out/

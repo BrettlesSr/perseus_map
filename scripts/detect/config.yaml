@@ -1,0 +1,40 @@
+# Detection settings for the real Perseus map (public/map/perseus.png).
+# Colours are OpenCV HSV: H 0-180, S 0-255, V 0-255.
+# Run detect_map.py with --debug to write the star/lane masks into the output folder,
+# then adjust until the masks show only star dots / lane ink.
+#
+# The map is a clean diagram: outlined circles on a light grey (V~228) background,
+# filled white, navy, green or dark red; black lanes, dashed region borders and text.
+
+image: public/map/perseus.png
+
+stars:
+  # the circles' FILL colours (the black outline is excluded, so radii are fill radii).
+  # Labels are printed in the same colours, but their strokes are thin enough that
+  # open_px removes them.
+  colors:
+    - [[0, 0, 245], [180, 12, 255]]      # white (background is V~228, so it is excluded)
+    - [[110, 150, 80], [130, 255, 200]]  # navy
+    - [[50, 150, 80], [70, 255, 200]]    # green
+    - [[0, 150, 110], [8, 255, 230]]     # dark red
+    - [[172, 150, 110], [180, 255, 230]] # dark red (hue wraps around 180)
+  open_px: 3          # morphological opening; erases text strokes (5 would erase the small red stars)
+  min_radius: 2.5     # px, radius of the largest circle that fits inside the blob (red stars ~3)
+  max_radius: 14
+  min_fill: 0.6       # how solid the blob core is (round dot ~1.0)
+  max_aspect: 1.5     # bounding box long side / short side
+
+lanes:
+  colors:
+    - [[0, 0, 0], [180, 90, 110]]        # black ink
+  dilate_px: 3        # tolerance: lanes are drawn to circle edges, not always centre-to-centre
+  max_length: 400     # px; longest lane worth testing
+  min_coverage: 0.85  # fraction of samples along the segment that must be ink (dashed borders ~0.5)
+  star_margin: 3      # px trimmed past each star's fill radius (skips the outline)
+  clearance: 4        # px; reject a pair if another star sits this close to the segment
+
+matching:
+  tolerance: auto     # px (after alignment) a star may move and keep its id; 'auto' =
+  auto_fraction: 0.35 #   this fraction of the median distance between neighbouring stars
+  allow_scale: true   # also consider uniform rescales (image width/height ratios)
+  moved_threshold: 2  # px; smaller shifts are reported as unchanged
