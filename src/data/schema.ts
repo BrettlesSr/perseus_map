@@ -5,7 +5,7 @@ import { z } from "zod";
 export const SystemIdSchema = z.string().regex(/^sys-\d{4,}$/, "system ids look like sys-0042");
 
 /** The map legend: what a node's colour means. */
-export const SystemKinds = ["empty", "player", "npc", "hostile"] as const;
+export const SystemKinds = ["empty", "major", "npc", "hostile"] as const;
 export const RegionIdSchema = z.string().regex(/^reg-\d{2,}$/, "region ids look like reg-03");
 
 export const MapSystemSchema = z.object({

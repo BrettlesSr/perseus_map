@@ -15,7 +15,7 @@ import {
 
 export const kindLabel: Record<SystemKind, string> = {
   empty: "Empty",
-  player: "Player",
+  major: "Major power",
   npc: "NPC",
   hostile: "Hostile NPC",
 };

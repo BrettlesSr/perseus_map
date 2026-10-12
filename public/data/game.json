@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T23:09:58.770Z",
+  "generatedAt": "2026-10-12T23:16:47.663Z",
   "systems": [
     {
       "id": "sys-0001",
@@ -384,7 +384,7 @@
     {
       "id": "sys-0077",
       "name": "Decatur",
-      "description": "The Decatur Riparian Authority, a confederation and Far Stars Federation member."
+      "description": "The Decator Riperine Authority: a decentralised confederation of settlements and rural communities, in the Federation's Neutral faction. Only one great river valley across the desert is habitable. After the wormhole closed, the governor tried to freeze the planet in a pre-industrial stasis for a generation, until fleets from the Federation's founding members invaded to end it. Now recovering, it is the largest source of grain in known space. Far Stars Federation member."
     },
     {
       "id": "sys-0078",
@@ -959,6 +959,16 @@
       "sourceUrl": "https://forums.spacebattles.com/threads/star-lords-of-perseus-space-empire-game-signups.1333718/post-125814530"
     },
     {
+      "id": "lurkerstan",
+      "name": "Lurkerstan",
+      "player": "",
+      "color": "#9aa3b5",
+      "flagUrl": "",
+      "description": "Data pending. Lurkerstan's player dropped out before the game began; it is held as an NPC until its details are written up.",
+      "type": "npc",
+      "sourceUrl": ""
+    },
+    {
       "id": "sword-worlds",
       "name": "The Sword Worlds",
       "player": "",
@@ -1019,6 +1029,11 @@
       "systemId": "sys-0018",
       "nationId": "chosen",
       "role": "client"
+    },
+    {
+      "systemId": "sys-0019",
+      "nationId": "lurkerstan",
+      "role": "capital"
     },
     {
       "systemId": "sys-0020",

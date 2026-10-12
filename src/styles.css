@@ -592,12 +592,12 @@ button {
   border: 1px solid var(--border);
 }
 
-.kind-badge--player,
-.kind-chip--player {
+.kind-badge--major,
+.kind-chip--major {
   border-color: #5b6dff;
 }
 
-.kind-badge--player {
+.kind-badge--major {
   background: rgba(91, 109, 255, 0.2);
 }
 
@@ -647,7 +647,7 @@ button {
   color: var(--text);
 }
 
-.kind--player strong {
+.kind--major strong {
   color: #8f9bff;
 }
 

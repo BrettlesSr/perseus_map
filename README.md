@@ -12,8 +12,8 @@ The data comes from two sources, joined by id (`sys-0042`, `reg-03`):
 | Where stars, lanes and regions are, and each star's kind | `public/data/map.json` | detected from the map image, fixed up in the editor |
 | Names, descriptions, nations, who holds what | Google Sheet → `public/data/game.json` | GMs, in the sheet |
 
-A star's **kind** comes from its colour on the map: white = empty, blue = player,
-green = NPC, red = hostile NPC.
+A star's **kind** comes from its colour on the map: white = empty, blue = major power
+(player nations and the big NPC powers), green = NPC, red = hostile NPC.
 
 ## Day-to-day
 
@@ -117,7 +117,7 @@ python scripts/detect/make_sample_map.py           # synthetic map + data for ex
 ### Tuning detection
 [`scripts/detect/config.yaml`](scripts/detect/config.yaml) is tuned for the current map: a clean
 diagram with circles filled white, navy, green or dark red, and black lanes. Its colour ranges are
-named by kind (`empty`, `player`, `npc`, `hostile`). Sizes are `auto`, scaled from the median
+named by kind (`empty`, `major`, `npc`, `hostile`). Sizes are `auto`, scaled from the median
 star size, so a resized map needs no retuning: the 1280px and 1920px versions of the map both
 detect exactly with the same config. If the artist changes the style (new star colours, thicker
 lines, a different background), retune it:

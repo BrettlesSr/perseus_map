@@ -16,7 +16,7 @@ stars:
   colors:
     empty:                                  # white (background is V~228, so it is excluded)
       - [[0, 0, 245], [180, 12, 255]]
-    player:                                 # navy
+    major:                                  # navy: major powers
       - [[110, 150, 80], [130, 255, 200]]
     npc:                                    # green
       - [[50, 150, 80], [70, 255, 200]]

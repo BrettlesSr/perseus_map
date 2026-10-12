@@ -8,10 +8,10 @@ interface Props {
   onClose: () => void;
 }
 
-const kindOrder: SystemKind[] = ["player", "npc", "hostile", "empty"];
-const statLabel: Record<SystemKind, string> = { player: "player", npc: "NPC", hostile: "hostile", empty: "empty" };
+const kindOrder: SystemKind[] = ["major", "npc", "hostile", "empty"];
+const statLabel: Record<SystemKind, string> = { major: "major power", npc: "NPC", hostile: "hostile", empty: "empty" };
 const kindHeading: Record<SystemKind, string> = {
-  player: "Player systems",
+  major: "Major power systems",
   npc: "NPC systems",
   hostile: "Hostile NPC systems",
   empty: "Empty systems",
