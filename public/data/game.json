@@ -1,0 +1,669 @@
+{
+  "generatedAt": "2026-10-12T21:46:43.957Z",
+  "systems": [
+    {
+      "id": "sys-0001",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0002",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0003",
+      "name": "Cherryh",
+      "description": ""
+    },
+    {
+      "id": "sys-0004",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0005",
+      "name": "Nauzika",
+      "description": ""
+    },
+    {
+      "id": "sys-0006",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0007",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0008",
+      "name": "Sturm",
+      "description": ""
+    },
+    {
+      "id": "sys-0009",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0010",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0011",
+      "name": "Garibaldi",
+      "description": ""
+    },
+    {
+      "id": "sys-0012",
+      "name": "Vanir",
+      "description": ""
+    },
+    {
+      "id": "sys-0013",
+      "name": "Mayerling",
+      "description": ""
+    },
+    {
+      "id": "sys-0014",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0015",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0016",
+      "name": "Kholbran",
+      "description": ""
+    },
+    {
+      "id": "sys-0017",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0018",
+      "name": "Azadestan",
+      "description": ""
+    },
+    {
+      "id": "sys-0019",
+      "name": "Lurkerstan",
+      "description": ""
+    },
+    {
+      "id": "sys-0020",
+      "name": "Lycia",
+      "description": ""
+    },
+    {
+      "id": "sys-0021",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0022",
+      "name": "Placidia",
+      "description": ""
+    },
+    {
+      "id": "sys-0023",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0024",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0025",
+      "name": "Hebonaidd",
+      "description": ""
+    },
+    {
+      "id": "sys-0026",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0027",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0028",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0029",
+      "name": "Vrudgrug Qon",
+      "description": ""
+    },
+    {
+      "id": "sys-0030",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0031",
+      "name": "Caxias",
+      "description": ""
+    },
+    {
+      "id": "sys-0032",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0033",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0034",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0035",
+      "name": "Han Shan",
+      "description": ""
+    },
+    {
+      "id": "sys-0036",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0037",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0038",
+      "name": "Atalanta",
+      "description": ""
+    },
+    {
+      "id": "sys-0039",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0040",
+      "name": "Nouvelle Liberte",
+      "description": ""
+    },
+    {
+      "id": "sys-0041",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0042",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0043",
+      "name": "Drasan",
+      "description": ""
+    },
+    {
+      "id": "sys-0044",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0045",
+      "name": "Mu",
+      "description": ""
+    },
+    {
+      "id": "sys-0046",
+      "name": "Bafsk",
+      "description": ""
+    },
+    {
+      "id": "sys-0047",
+      "name": "Bamberia",
+      "description": ""
+    },
+    {
+      "id": "sys-0048",
+      "name": "Velyke Nebo",
+      "description": ""
+    },
+    {
+      "id": "sys-0049",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0050",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0051",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0052",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0053",
+      "name": "al-Majid",
+      "description": ""
+    },
+    {
+      "id": "sys-0054",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0055",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0056",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0057",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0058",
+      "name": "Rerd Adzord",
+      "description": ""
+    },
+    {
+      "id": "sys-0059",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0060",
+      "name": "Refuge",
+      "description": ""
+    },
+    {
+      "id": "sys-0061",
+      "name": "Montana",
+      "description": ""
+    },
+    {
+      "id": "sys-0062",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0063",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0064",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0065",
+      "name": "Chengdu",
+      "description": ""
+    },
+    {
+      "id": "sys-0066",
+      "name": "Far Away",
+      "description": ""
+    },
+    {
+      "id": "sys-0067",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0068",
+      "name": "Fuso",
+      "description": ""
+    },
+    {
+      "id": "sys-0069",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0070",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0071",
+      "name": "Ctesibius",
+      "description": ""
+    },
+    {
+      "id": "sys-0072",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0073",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0074",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0075",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0076",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0077",
+      "name": "Decatur",
+      "description": ""
+    },
+    {
+      "id": "sys-0078",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0079",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0080",
+      "name": "Bellevue",
+      "description": ""
+    },
+    {
+      "id": "sys-0081",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0082",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0083",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0084",
+      "name": "Abzu",
+      "description": ""
+    },
+    {
+      "id": "sys-0085",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0086",
+      "name": "Drammol Nan",
+      "description": ""
+    },
+    {
+      "id": "sys-0087",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0088",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0089",
+      "name": "Poincare",
+      "description": ""
+    },
+    {
+      "id": "sys-0090",
+      "name": "Al'Kesh",
+      "description": ""
+    },
+    {
+      "id": "sys-0091",
+      "name": "Inari",
+      "description": ""
+    },
+    {
+      "id": "sys-0092",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0093",
+      "name": "Kavinhome",
+      "description": ""
+    },
+    {
+      "id": "sys-0094",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0095",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0096",
+      "name": "Tempest",
+      "description": ""
+    },
+    {
+      "id": "sys-0097",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0098",
+      "name": "San Jacinto",
+      "description": ""
+    },
+    {
+      "id": "sys-0099",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0100",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0101",
+      "name": "Ghazdun",
+      "description": ""
+    },
+    {
+      "id": "sys-0102",
+      "name": "Neos Athos",
+      "description": ""
+    },
+    {
+      "id": "sys-0103",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0104",
+      "name": "Kavinka Prime",
+      "description": ""
+    },
+    {
+      "id": "sys-0105",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0106",
+      "name": "Banapur",
+      "description": ""
+    },
+    {
+      "id": "sys-0107",
+      "name": "Sweetwater",
+      "description": ""
+    },
+    {
+      "id": "sys-0108",
+      "name": "Aurora",
+      "description": ""
+    },
+    {
+      "id": "sys-0109",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0110",
+      "name": "Techerlen",
+      "description": ""
+    },
+    {
+      "id": "sys-0111",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0112",
+      "name": "Otuken",
+      "description": ""
+    },
+    {
+      "id": "sys-0113",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0114",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0115",
+      "name": "Jangala",
+      "description": ""
+    },
+    {
+      "id": "sys-0116",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0117",
+      "name": "Quwamis",
+      "description": ""
+    },
+    {
+      "id": "sys-0118",
+      "name": "Te'exxo",
+      "description": ""
+    },
+    {
+      "id": "sys-0119",
+      "name": "Fullbright",
+      "description": ""
+    },
+    {
+      "id": "sys-0120",
+      "name": "",
+      "description": ""
+    },
+    {
+      "id": "sys-0121",
+      "name": "Grestel",
+      "description": ""
+    },
+    {
+      "id": "sys-0122",
+      "name": "Yantar",
+      "description": ""
+    },
+    {
+      "id": "sys-0123",
+      "name": "Novaya Yug-Kamchatsky",
+      "description": ""
+    }
+  ],
+  "nations": [],
+  "presence": [],
+  "regions": [
+    {
+      "id": "reg-01",
+      "name": "Far Extremadura",
+      "description": ""
+    },
+    {
+      "id": "reg-02",
+      "name": "Deep Extremadura",
+      "description": ""
+    },
+    {
+      "id": "reg-03",
+      "name": "North Frontier",
+      "description": ""
+    },
+    {
+      "id": "reg-04",
+      "name": "Old Drasan",
+      "description": ""
+    },
+    {
+      "id": "reg-05",
+      "name": "Near Extremadura",
+      "description": ""
+    },
+    {
+      "id": "reg-06",
+      "name": "Corewards River",
+      "description": ""
+    },
+    {
+      "id": "reg-07",
+      "name": "Spinwards Rim",
+      "description": ""
+    },
+    {
+      "id": "reg-08",
+      "name": "Kavin March",
+      "description": ""
+    },
+    {
+      "id": "reg-09",
+      "name": "Rimwards River",
+      "description": ""
+    }
+  ]
+}

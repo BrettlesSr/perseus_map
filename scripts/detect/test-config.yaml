@@ -1,0 +1,31 @@
+# Detection settings tuned for the SYNTHETIC test maps (make_sample_map.py), used by
+# test_detect.py. The real map's settings live in config.yaml.
+# Colours are OpenCV HSV: H 0-180, S 0-255, V 0-255.
+
+image: detect-out/sample/public/map/perseus.png
+
+stars:
+  # one or more [lower, upper] HSV ranges; a pixel matching any range counts.
+  # Add a range per star colour if the artist uses several (e.g. red giants).
+  colors:
+    - [[10, 20, 235], [35, 90, 255]]   # bright pale-yellow ink (hue ~21); excludes bluish glow
+  open_px: 5          # morphological opening; erases text, dust and lane ends touching stars
+  min_radius: 4       # px, radius of the largest circle that fits inside the blob
+  max_radius: 30
+  min_fill: 0.6       # how solid the blob core is (round dot ~1.0)
+  max_aspect: 1.6     # bounding box long side / short side
+
+lanes:
+  colors:
+    - [[95, 70, 150], [120, 255, 255]]  # light-blue ink
+  dilate_px: 3        # tolerance for hand-drawn wobble
+  max_length: 600     # px; longest lane worth testing
+  min_coverage: 0.85  # fraction of samples along the segment that must be lane ink
+  star_margin: 4      # px trimmed past each star's radius before sampling
+  clearance: 6        # px; reject a pair if another star sits this close to the segment
+
+matching:
+  tolerance: auto     # px (after alignment) a star may move and keep its id; 'auto' =
+  auto_fraction: 0.35 #   this fraction of the median distance between neighbouring stars
+  allow_scale: true   # also consider uniform rescales (image width/height ratios)
+  moved_threshold: 3  # px; smaller shifts are reported as unchanged

@@ -1,0 +1,88 @@
+name: Detect map changes
+
+# The artist uploads a new map image on a branch and opens a PR. This re-detects stars
+# and lanes, matches them to main's ids, commits the new map.json to the same PR and
+# comments with the report and an overlay, so the image and its data merge together.
+on:
+  pull_request:
+    paths: ["public/map/**"]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: detect-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  detect:
+    # pushing back needs a branch in this repo, not a fork
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/detect/requirements.txt
+      - run: pip install -r scripts/detect/requirements.txt
+
+      # always match against main's ids, so re-uploads on the PR don't drift
+      - name: Detect
+        run: |
+          git show origin/main:public/data/map.json > "$RUNNER_TEMP/base-map.json"
+          IMAGE=$(git diff --name-only --diff-filter=AM origin/main...HEAD -- public/map | head -n1)
+          python scripts/detect/detect_map.py \
+            ${IMAGE:+--image "$IMAGE"} \
+            --current "$RUNNER_TEMP/base-map.json" \
+            --out detect-out --debug
+          cp detect-out/map.proposed.json public/data/map.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: detect-out
+          path: detect-out/
+
+      - name: Commit map.json to the PR
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/map.json
+          git diff --cached --quiet || { git commit -m "Update map.json from detection"; git push; }
+
+      # host the overlay on a side branch so the comment can show it inline
+      - name: Publish overlay preview
+        id: preview
+        run: |
+          DEST="pr-${{ github.event.pull_request.number }}/overlay-${{ github.run_number }}.jpg"
+          if git fetch origin detect-previews; then
+            git worktree add -B detect-previews "$RUNNER_TEMP/previews" origin/detect-previews
+          else
+            git worktree add --detach "$RUNNER_TEMP/previews"
+            git -C "$RUNNER_TEMP/previews" checkout --orphan detect-previews
+            git -C "$RUNNER_TEMP/previews" rm -rfq --ignore-unmatch .
+          fi
+          mkdir -p "$RUNNER_TEMP/previews/$(dirname "$DEST")"
+          cp detect-out/overlay.jpg "$RUNNER_TEMP/previews/$DEST"
+          git -C "$RUNNER_TEMP/previews" add .
+          git -C "$RUNNER_TEMP/previews" commit -qm "Overlay for PR #${{ github.event.pull_request.number }}"
+          git -C "$RUNNER_TEMP/previews" push origin detect-previews
+          echo "url=https://github.com/${{ github.repository }}/blob/detect-previews/$DEST?raw=true" >> "$GITHUB_OUTPUT"
+
+      - name: Comment report
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            cat detect-out/detect-report.md
+            echo
+            echo "![detection overlay](${{ steps.preview.outputs.url }})"
+            echo
+            echo "Full-size overlay and colour masks: [run artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          } > comment.md
+          gh pr comment ${{ github.event.pull_request.number }} --body-file comment.md
